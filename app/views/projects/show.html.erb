@@ -1,7 +1,9 @@
 <h3>Projects</h3>
 
-<%= @project.name %>
-<%= @project.material %>
-<%= @project.challenge.theme %>
-<p>Number Of Contestants: <%= @project.contestants.count %></p>
-<p>Average Contestant Experience: <%= @project.contestants.avg_exp %></p>
+<ul>
+  <li><p>Name: <%= @project.name %></p></li>
+  <li><p>Material: <%= @project.material %></p></li>
+  <li><p>Theme: <%= @project.challenge.theme %></p></li>
+  <li><p>Number Of Contestants: <%= @project.contestants.count %></p></li>
+  <li><p>Average Contestant Experience: <%= @project.contestants.avg_exp %></p></li>
+</ul>

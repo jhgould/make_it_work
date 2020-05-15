@@ -29,9 +29,9 @@ RSpec.describe "project show page", type: :feature do
 
   it "can access show page and see projects name, material and theme" do
     visit "/projects/#{@news_chic.id}"
-    expect(page).to have_content(@news_chic.name)
-    expect(page).to have_content(@news_chic.material)
-    expect(page).to have_content(@recycled_material_challenge.theme)
+    expect(page).to have_content("Name: #{@news_chic.name}")
+    expect(page).to have_content("Material: #{@news_chic.material}")
+    expect(page).to have_content("Theme: #{@recycled_material_challenge.theme}")
   end
 
   it "user can see the number of contestants" do
