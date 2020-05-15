@@ -24,6 +24,23 @@ RSpec.describe "project show page", type: :feature do
     expect(page).to have_content(@news_chic.name)
     expect(page).to have_content(@news_chic.material)
     expect(page).to have_content(@recycled_material_challenge.theme)
+  end
+
+  it "user can see the number of contestants" do
+
+    ContestantProject.create(contestant_id: @jay.id, project_id: @news_chic.id)
+    ContestantProject.create(contestant_id: @gretchen.id, project_id: @news_chic.id)
+    ContestantProject.create(contestant_id: @gretchen.id, project_id: @upholstery_tux.id)
+    ContestantProject.create(contestant_id: @kentaro.id, project_id: @upholstery_tux.id)
+    ContestantProject.create(contestant_id: @kentaro.id, project_id: @boardfit.id)
+    ContestantProject.create(contestant_id: @erin.id, project_id: @boardfit.id)
+
+    visit "/projects/#{@news_chic.id}"
+    expect(page).to have_content(@news_chic.name)
+    expect(page).to have_content(@news_chic.material)
+    expect(page).to have_content(@recycled_material_challenge.theme)
+    expect(page).to have_content("Number Of Contestants: 2")
+
 
 
 
