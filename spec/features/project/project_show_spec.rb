@@ -49,10 +49,19 @@ RSpec.describe "project show page", type: :feature do
     expect(page).to have_content(@furniture_challenge.theme)
     expect(page).to have_content("Number Of Contestants: 2")
 
+  end
+  it "user can see avg years of experience" do
 
+    visit "/projects/#{@news_chic.id}"
+    expect(page).to have_content(@news_chic.name)
+    expect(page).to have_content(@news_chic.material)
+    expect(page).to have_content(@recycled_material_challenge.theme)
+    expect(page).to have_content("Number Of Contestants: 2")
+    expect(page).to have_content("Average Contestant Experience: 12.5")
 
 
   end
+
 
 
 end
