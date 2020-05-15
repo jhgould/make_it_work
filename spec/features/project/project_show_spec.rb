@@ -65,10 +65,27 @@ RSpec.describe "project show page", type: :feature do
     expect(page).to have_content("Theme: #{@furniture_challenge.theme}")
     expect(page).to have_content("Number Of Contestants: 2")
     expect(page).to have_content("Average Contestant Experience: 10")
+  end
+
+  it "user can add a contestant to a project" do
+    visit "/projects/#{@news_chic.id}"
+
+    fill_in "Contestant ID", with: @erin.idea
+    click_button "Add Contestant To Project"
+    expect(current_path).to eq("/projects/#{@news_chic.id}")
+
+    expect(page).to have_content("Name: #{@news_chic.name}")
+    expect(page).to have_content("Material: #{@news_chic.material}")
+    expect(page).to have_content("Theme: #{@recycled_material_challenge.theme}")
+    expect(page).to have_content("Number Of Contestants: 3")
+    expect(page).to have_content("Average Contestant Experience: 13.3")
+
+
+
+    # And when I visit the contestants index page
+    # I see that project listed under that contestant's name
+
 
 
   end
-
-
-
 end
